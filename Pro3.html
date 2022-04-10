@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PieChart</title>
+    <link rel="stylesheet" href="Pro3.css"
+</head>
+<body>
+    <div id="app">
+        <h1>Pie chart maker</h1>
+        <form name="gen" onsubmit="return false;">
+          
+          <br>
+          <table class="calc3">
+            <tr>
+              <td>Enter title:</td>
+              <td><input type="text"  v-model="txt" name="title" placeholder="My Title" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Enter data names:</td>
+              <td><input type="text" v-model="desc" placeholder="name1 name2 name3 name4 name5" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Enter data values:</td>
+              <td><input type="text" v-model="data" placeholder="300 500 100 200 200" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Select slice text:</td>
+              <td>
+                <select v-model="st" @change="OnDraw" class="form-control">
+                  <option value="percentage">Percentage</option>
+                  <option value="value">Value</option>
+                  <option value="label">Label</option>
+                  <option value="none">None</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Set 3D chart:</td>
+              <td><input @change="OnDraw"  type="checkbox" v-model="c"  class="form-control"></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>
+                <a role="button" title="Draw Graph" @click="OnDraw()" class="btn btn-light">draw</a>
+                <a role="button" title="Zoom Out" @click="OnZoomOut()" class="btn btn-light">zoomout</a>
+                <a role="button" title="Zoom In" @click="OnZoomIn()" class="btn btn-light">zoomin</a>
+                <a role="button" title="Save as PNG Image" id="download" download="bar-graph" target="_blank" class="btn btn-light">save</a>
+                <a role="button" title="Copy Graph" @click="OnCopy()" class="btn btn-light">copy</a>
+                <a role="button" title="Print Graph" @click="OnPrint()" class="btn btn-light">print</a> 
+                <a role="button" title="Reset" @click="OnReset()" class="btn btn-light">delete</button>
+              </td>
+              
+            </tr>
+            <tr>
+              <td>
+                <button type="button" @click="OnDraw">
+                  submit
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2"><div ref="chart_div"></div></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <script src="Pro3.js"></script>
+      
+</body>
+</html>
